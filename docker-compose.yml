@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  mysql-docker:
+    image: mysql:5.7.26
+    environment:
+       MYSQL_ROOT_PASSWORD: root123
+       MYSQL_DATABASE: little_bit_extra
+       MYSQL_USER: app_user
+       MYSQL_PASSWORD: test123
+    ports:
+      - "2012:3306"
+    volumes:
+      - /data/mysql
+    restart: always
+    
+  spring-boot-crud-docker-composer:
+    image: spring-boot-crud-docker-composer-image
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    depends_on:
+      - mysql-docker
+    ports:
+      - "8080:8080"
+    volumes:
+      - /data/spring-boot-crud-docker-composer-image
