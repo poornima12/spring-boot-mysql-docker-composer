@@ -10,7 +10,7 @@ Spring boot and Mysql with Docker compose
 - Swagger
 
 ## Build
-
+docker-compose build
 
 ## Run
 docker-compose up
